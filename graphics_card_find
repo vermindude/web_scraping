@@ -1,0 +1,10 @@
+from urllib.request import urlopen as uReq
+from bs4 import BeautifulSoup as soup
+
+my_url = 'hhttps://www.newegg.com/Desktop-Graphics-Cards/SubCategory/ID-48?Tid=7709'
+uClient = uReq(my_url)
+page_html = uClient.read()
+uClient.close()
+page_soup = soup(page_html, "html.parser")
+containers = page_soup.findAll("div", {"class": "item-container "})
+print(containers[0])
